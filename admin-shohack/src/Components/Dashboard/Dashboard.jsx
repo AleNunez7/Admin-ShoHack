@@ -38,7 +38,7 @@ function Dashboard() {
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link active" href="/">
+                  <a className="nav-link active" href="/dashboard">
                     <i class="fas fa-home"></i> Dashboard
                   </a>
                 </li>
