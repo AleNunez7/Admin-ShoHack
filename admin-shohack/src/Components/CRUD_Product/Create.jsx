@@ -25,8 +25,7 @@ function Create() {
         url: "http://localhost:8000/product",
         data: { name, description, image, price, stock, category },
       });
-      console.log(response.data.product);
-      dispatch({ type: "ADD_PRODUCT", payload: response.data.product });
+      setProduct(response.data);
       history.push("/dashboard");
     } catch (error) {
       setError("Error, intente nuevamente");

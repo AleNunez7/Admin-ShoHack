@@ -65,7 +65,7 @@ function Home() {
                       <th>{product.category}</th>
                       <th>
                         <a
-                          href="/producto/modificar"
+                          href={`/producto/modificar/${product._id}`}
                           className="btn btn-primary p-1 text-white"
                         >
                           <i class="fas fa-edit me-3"></i>

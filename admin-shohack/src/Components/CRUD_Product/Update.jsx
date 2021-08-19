@@ -1,12 +1,24 @@
 import React from "react";
 import Navbar from "../Dashboard/Navbar";
 import SidebarMenu from "../Dashboard/SidebarMenu";
-
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Update() {
-  const product = useSelector((state) => state);
-  console.log(product);
+  const [products, setProducts] = useState([]);
+  const params = useParams();
+
+  useEffect(() => {
+    const patchProduct = async () => {
+      const response = await axios({
+        method: "PATCH",
+        url: "http://localhost:8000/product/" + params.id,
+      });
+      console.log(response);
+    };
+    patchProduct();
+  }, []);
 
   return (
     <>
@@ -18,14 +30,14 @@ function Update() {
           </div>
           <div className="col-sm-9">
             <div className="border p-2">
-              <h2 className="text-center fw-bold"> CREAR PRODUCTO</h2>
+              <h2 className="text-center fw-bold"> MODFICAR PRODUCTO</h2>
               <form onSubmit="">
                 <label htmlFor="">Nombre</label>
                 <input
                   className="w-100 mt-2"
                   type="text"
                   name="name"
-                  value={product.name}
+                  /*  value={name} */
                   /*     onChange={(ev) => setName(ev.target.value)} */
                 />
 
@@ -34,7 +46,7 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="description"
-                  value={product.description}
+                  /*  value={description} */
                   /* onChange={(ev) => setDescription(ev.target.value)} */
                 />
 
@@ -43,7 +55,7 @@ function Update() {
                   className="w-100 mt-2"
                   type="file"
                   name="image"
-                  value={product.image}
+                  /*  value={image} */
                   /*    onChange={(ev) => setImage(ev.target.value)} */
                 />
 
@@ -52,7 +64,7 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="price"
-                  value={product.price}
+                  /*  value={price} */
                   /* onChange={(ev) => setPrice(ev.target.value)} */
                 />
 
@@ -61,7 +73,7 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="stock"
-                  value={product.stock}
+                  /* value={stock} */
                   /*  onChange={(ev) => setStock(ev.target.value)} */
                 />
 
@@ -70,11 +82,16 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="category"
-                  value={product.category}
+                  /*  value={category} */
                   /* onChange={(ev) => setCategory(ev.target.value)} */
                 />
 
-                <button class="btn btn-success mt-2">CREAR</button>
+                <button
+                  /* onClick={() => handleUpdate} */
+                  class="btn btn-success mt-2"
+                >
+                  UPDATE
+                </button>
               </form>
             </div>
           </div>
