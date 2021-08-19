@@ -8,6 +8,7 @@ import axios from "axios";
 function Create() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [product, setProduct] = useState([]);
   const [error, setError] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

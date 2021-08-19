@@ -3,6 +3,7 @@ import React from "react";
 import Admin from "./Components/Admin/Admin";
 import Home from "./Components/Dashboard/Home";
 import Create from "./Components/CRUD_Product/Create";
+import Update from "./Components/CRUD_Product/Update";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route exact path="/admin" component={Admin} />
           <Route path="/dashboard" component={Home} />
           <Route path="/producto/crear" component={Create} />
+          <Route path="/producto/modificar" component={Update} />
         </Switch>
       </BrowserRouter>
     </div>
