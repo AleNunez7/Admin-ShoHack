@@ -6,8 +6,20 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function Update() {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const params = useParams();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const response = await axios({
+        method: "GET",
+        url: "http://localhost:8000/product/" + params.id,
+      });
+      console.log(response.data);
+      setProduct(response.data);
+    };
+    getProduct();
+  }, []);
 
   useEffect(() => {
     const patchProduct = async () => {
