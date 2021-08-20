@@ -7,8 +7,10 @@ import axios from "axios";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
   const user = useSelector((state) => state.user);
   console.log(user);
+
   function handleProductDelete(productToDelete) {
     axios({
       method: "delete",
@@ -22,6 +24,17 @@ function Home() {
     );
   }
 
+  function handleUserDelete(userToDelete) {
+    axios({
+      method: "delete",
+      url: "http://localhost:8000/users/" + userToDelete._id,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    setUsers((users) => users.filter((user) => user._id !== userToDelete._id));
+  }
+
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios({
@@ -32,6 +45,7 @@ function Home() {
         },
       });
       setProducts(response.data.products);
+      setUsers(response.data.users);
     };
     getProduct();
   }, []);
@@ -45,6 +59,7 @@ function Home() {
             <SidebarMenu />
           </div>
           <div className="col-sm-9">
+            <p className="text-center fw-bold fs-3 my-3">PRODUCTOS</p>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -77,6 +92,48 @@ function Home() {
 
                         <button
                           onClick={() => handleProductDelete(product)}
+                          className="btn btn-danger text-white"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </th>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <p className="text-center fw-bold fs-3 my-3">USUARIOS</p>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Usuario</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => {
+                  return (
+                    <tr>
+                      <th>{user.firstname}</th>
+                      <th>{user.lastname}</th>
+                      <th>{user.username}</th>
+                      <th>{user.email}</th>
+                      <th>{user.role}</th>
+
+                      <th>
+                        <a
+                          href={`/usuario/modificar/${user._id}`}
+                          className="btn btn-primary text-white me-2"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+
+                        <button
+                          onClick={() => handleUserDelete(user)}
                           className="btn btn-danger text-white"
                         >
                           <i class="fas fa-trash"></i>

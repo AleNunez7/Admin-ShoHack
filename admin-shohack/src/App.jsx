@@ -3,7 +3,8 @@ import React from "react";
 import Admin from "./Components/Admin/Admin";
 import Home from "./Components/Dashboard/Home";
 import Create from "./Components/CRUD_Product/Create";
-import Update from "./Components/CRUD_Product/Update";
+import UpdateProduct from "./Components/CRUD_Product/UpdateProduct";
+import UpdateUser from "./Components/CRUD_User/UpdateUser";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
           <Route exact path="/admin" component={Admin} />
           <Route path="/dashboard" component={Home} />
           <Route path="/producto/crear" component={Create} />
-          <Route path="/producto/modificar/:id" component={Update} />
+          <Route path="/producto/modificar/:id" component={UpdateProduct} />
+          <Route path="/usuario/modificar/:id" component={UpdateUser} />
         </Switch>
       </BrowserRouter>
     </div>
