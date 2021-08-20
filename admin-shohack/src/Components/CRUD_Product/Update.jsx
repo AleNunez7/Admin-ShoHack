@@ -50,7 +50,7 @@ function Update() {
           </div>
           <div className="col-sm-9">
             <div className="border p-2">
-              <h2 className="text-center fw-bold"> MODFICAR PRODUCTO</h2>
+              <h2 className="text-center fw-bold"> MODIFICAR PRODUCTO</h2>
               <form onSubmit={handleUpdate}>
                 <label htmlFor="">Nombre</label>
                 <input
