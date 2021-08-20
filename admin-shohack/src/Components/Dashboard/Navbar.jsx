@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Dashboard() {
+  const user = useSelector((state) => state.user);
+  const username = user.username;
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,8 +21,12 @@ function Dashboard() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="align-items-end">
-            <div className="collapse navbar-collapse align-items-end" id="navbarScroll">
-              <button className="btn btn-outline-success " type="submit">
+            <div
+              className="collapse navbar-collapse  align-items-center"
+              id="navbarScroll"
+            >
+              <p className="me-3 fw-bold ">{username.toUpperCase()}</p>
+              <button className="btn btn-outline-success" type="submit">
                 Log Out
               </button>
             </div>

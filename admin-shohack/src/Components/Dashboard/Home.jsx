@@ -2,15 +2,20 @@ import React from "react";
 import Navbar from "./Navbar";
 import SidebarMenu from "./SidebarMenu";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 function Home() {
   const [products, setProducts] = useState([]);
-
+  const user = useSelector((state) => state.user);
+  console.log(user);
   function handleProductDelete(productToDelete) {
     axios({
       method: "delete",
       url: "http://localhost:8000/product/" + productToDelete._id,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     setProducts((products) =>
       products.filter((product) => product._id !== productToDelete._id)
@@ -22,6 +27,9 @@ function Home() {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       });
 
       setProducts(response.data.products);
