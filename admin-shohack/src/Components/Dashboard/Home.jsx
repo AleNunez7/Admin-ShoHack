@@ -51,15 +51,14 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      <Navbar />
+    <>
+      <div>
+        <SidebarMenu />
+      </div>
       <div className="container">
         <div className="row">
-          <div className="col-sm-3 bg-light">
-            <SidebarMenu />
-          </div>
-          <div className="col-sm-9">
-            <p className="text-center fw-bold fs-3 my-3">PRODUCTOS</p>
+          <div className="col">
+            <p className="text-center fw-bold fs-3">PRODUCTOS</p>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -147,7 +146,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
