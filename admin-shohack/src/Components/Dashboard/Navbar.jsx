@@ -3,13 +3,11 @@ import React from "react";
 function Dashboard() {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            Navbar scroll
-          </a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <a className="navbar-brand">ShoHack Admin Panel</a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarScroll"
@@ -17,12 +15,14 @@ function Dashboard() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarScroll">
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
+          <div className="align-items-end">
+            <div className="collapse navbar-collapse align-items-end" id="navbarScroll">
+              <button className="btn btn-outline-success " type="submit">
+                Log Out
+              </button>
+            </div>
           </div>
         </div>
       </nav>
