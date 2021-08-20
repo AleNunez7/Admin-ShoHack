@@ -31,7 +31,6 @@ function Home() {
           Authorization: `Bearer ${user.token}`,
         },
       });
-
       setProducts(response.data.products);
     };
     getProduct();

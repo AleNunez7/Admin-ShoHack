@@ -22,9 +22,9 @@ function Admin() {
     const response = await axios({
       method: "POST",
       url: "http://localhost:8000/tokens",
-      data: { username: username, password: password },
+      data: { username, password },
     });
-    response.data.user.token = response.data.token;
+    response.data.user.token = await response.data.token;
     dispatch({ type: "ADD_USER", payload: response.data.user });
     history.push("/dashboard");
   };

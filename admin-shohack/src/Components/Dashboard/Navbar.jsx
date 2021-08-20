@@ -25,7 +25,7 @@ function Dashboard() {
               className="collapse navbar-collapse  align-items-center"
               id="navbarScroll"
             >
-              <p className="me-3 fw-bold ">{username.toUpperCase()}</p>
+              <p className="me-3 fw-bold text-uppercase">{username}</p>
               <button className="btn btn-outline-success" type="submit">
                 Log Out
               </button>

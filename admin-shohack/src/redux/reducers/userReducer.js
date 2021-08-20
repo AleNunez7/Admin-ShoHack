@@ -4,6 +4,7 @@ function userReducer(user = false, action) {
       if (!user) {
         return action.payload;
       }
+      console.log("entre aca");
       return user;
     case "REMOVE_USER":
       return null;

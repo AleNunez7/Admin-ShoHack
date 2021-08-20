@@ -3,11 +3,18 @@ import Navbar from "../Dashboard/Navbar";
 import SidebarMenu from "../Dashboard/SidebarMenu";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 function Update() {
   const [product, setProduct] = useState([]);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+  const [category, setCategory] = useState("");
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -15,22 +22,23 @@ function Update() {
         method: "GET",
         url: "http://localhost:8000/products/" + params.id,
       });
-      console.log(response.data);
-      setProduct(response.data);
+      setName(response.data.name);
+      setDescription(response.data.description);
+      setPrice(response.data.price);
+      setStock(response.data.stock);
+      setCategory(response.data.category);
     };
     getProduct();
   }, []);
 
-  useEffect(() => {
-    const patchProduct = async () => {
-      const response = await axios({
-        method: "PATCH",
-        url: "http://localhost:8000/products/" + params.id,
-      });
-      console.log(response);
-    };
-    patchProduct();
-  }, []);
+  async function handleUpdate() {
+    const response = await axios({
+      method: "PATCH",
+      url: "http://localhost:8000/products/" + params.id,
+      data: { name, description, price, stock, category },
+    });
+    history.push("/dashboard");
+  }
 
   return (
     <>
@@ -43,14 +51,14 @@ function Update() {
           <div className="col-sm-9">
             <div className="border p-2">
               <h2 className="text-center fw-bold"> MODFICAR PRODUCTO</h2>
-              <form onSubmit="">
+              <form onSubmit={handleUpdate}>
                 <label htmlFor="">Nombre</label>
                 <input
                   className="w-100 mt-2"
                   type="text"
                   name="name"
-                  /*  value={name} */
-                  /*     onChange={(ev) => setName(ev.target.value)} */
+                  value={name}
+                  onChange={(ev) => setName(ev.target.value)}
                 />
 
                 <label htmlFor="">Descripción</label>
@@ -58,8 +66,8 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="description"
-                  /*  value={description} */
-                  /* onChange={(ev) => setDescription(ev.target.value)} */
+                  value={description}
+                  onChange={(ev) => setDescription(ev.target.value)}
                 />
 
                 <label htmlFor="">Imagen</label>
@@ -67,8 +75,8 @@ function Update() {
                   className="w-100 mt-2"
                   type="file"
                   name="image"
-                  /*  value={image} */
-                  /*    onChange={(ev) => setImage(ev.target.value)} */
+                  value={image}
+                  onChange={(ev) => setImage(ev.target.value)}
                 />
 
                 <label htmlFor="">Precio</label>
@@ -76,8 +84,8 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="price"
-                  /*  value={price} */
-                  /* onChange={(ev) => setPrice(ev.target.value)} */
+                  value={price}
+                  onChange={(ev) => setPrice(ev.target.value)}
                 />
 
                 <label htmlFor="">Stock</label>
@@ -85,8 +93,8 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="stock"
-                  /* value={stock} */
-                  /*  onChange={(ev) => setStock(ev.target.value)} */
+                  value={stock}
+                  onChange={(ev) => setStock(ev.target.value)}
                 />
 
                 <label htmlFor="">Categoría</label>
@@ -94,16 +102,11 @@ function Update() {
                   className="w-100 mt-2"
                   type="text"
                   name="category"
-                  /*  value={category} */
-                  /* onChange={(ev) => setCategory(ev.target.value)} */
+                  value={category}
+                  onChange={(ev) => setCategory(ev.target.value)}
                 />
 
-                <button
-                  /* onClick={() => handleUpdate} */
-                  class="btn btn-success mt-2"
-                >
-                  UPDATE
-                </button>
+                <button class="btn btn-success mt-2">UPDATE</button>
               </form>
             </div>
           </div>
