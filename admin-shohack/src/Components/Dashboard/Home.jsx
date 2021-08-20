@@ -2,10 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import SidebarMenu from "./SidebarMenu";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -66,14 +63,14 @@ function Home() {
                       <th>
                         <a
                           href={`/producto/modificar/${product._id}`}
-                          className="btn btn-primary p-1 text-white"
+                          className="btn btn-primary text-white me-2"
                         >
-                          <i class="fas fa-edit me-3"></i>
+                          <i class="fas fa-edit"></i>
                         </a>
 
                         <button
                           onClick={() => handleProductDelete(product)}
-                          className="btn btn-danger p-1 text-white"
+                          className="btn btn-danger text-white"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
