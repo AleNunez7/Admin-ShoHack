@@ -13,7 +13,7 @@ function Update() {
     const getProduct = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/product/" + params.id,
+        url: "http://localhost:8000/products/" + params.id,
       });
       console.log(response.data);
       setProduct(response.data);
@@ -25,7 +25,7 @@ function Update() {
     const patchProduct = async () => {
       const response = await axios({
         method: "PATCH",
-        url: "http://localhost:8000/product/" + params.id,
+        url: "http://localhost:8000/products/" + params.id,
       });
       console.log(response);
     };

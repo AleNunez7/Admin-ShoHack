@@ -12,7 +12,7 @@ function Home() {
   function handleProductDelete(productToDelete) {
     axios({
       method: "delete",
-      url: "http://localhost:8000/product/" + productToDelete._id,
+      url: "http://localhost:8000/products/" + productToDelete._id,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },

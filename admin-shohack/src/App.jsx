@@ -13,7 +13,7 @@ function App() {
           <Route exact path="/admin" component={Admin} />
           <Route path="/dashboard" component={Home} />
           <Route path="/producto/crear" component={Create} />
-          <Route path="/producto/modificar" component={Update} />
+          <Route path="/producto/modificar/:id" component={Update} />
         </Switch>
       </BrowserRouter>
     </div>
