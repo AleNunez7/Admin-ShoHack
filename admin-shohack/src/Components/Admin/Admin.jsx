@@ -55,11 +55,7 @@ function Admin() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="btn btn-primary btn-block mt-4"
-        onClick=""
-      >
+      <button type="submit" className="btn btn-primary btn-block mt-4">
         Ingresar
       </button>
     </form>
