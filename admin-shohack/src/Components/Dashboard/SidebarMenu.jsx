@@ -1,7 +1,33 @@
 import React from "react";
 import "../../App.css";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function SidebarMenu() {
+  const user = useSelector((state) => state.user);
+  const [menuLogOut, setMenuLogOut] = useState(false);
+  const [btnMenuLogOut, setBtnMenuLogOut] = useState(false);
+  const dispatch = useDispatch();
+
+  function handleMenuLogOut(ev) {
+    console.log();
+    if (typeof ev.target.className !== "string" || !ev.target.className.includes("dropMenu")) {
+      setMenuLogOut(false);
+      setBtnMenuLogOut(false);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("click", handleMenuLogOut);
+    return () => window.removeEventListener("click", handleMenuLogOut);
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    setMenuLogOut(btnMenuLogOut);
+    // eslint-disable-next-line
+  }, [btnMenuLogOut]);
+
   return (
     <div className="d-flex flex-column p-3 text-white bg-dark position-fixed sideBarMenu">
       <a
@@ -60,35 +86,19 @@ function SidebarMenu() {
             height="32"
             className="rounded-circle me-2"
           />
-          <strong>ususario</strong>
+          <strong>{user.username}</strong>
         </a>
         <ul
           className="dropdown-menu dropdown-menu-dark text-small shadow"
           aria-labelledby="dropdownUser1"
         >
-          <li>
-            <a className="dropdown-item" href="#">
-              New project...
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Settings
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Profile
-            </a>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Sign out
-            </a>
-          </li>
+          <Link className="text-decoration-none" to="/admin">
+            <li>
+              <span onClick={() => dispatch({ type: "REMOVE_USER" })} className="text-white ps-2">
+                Log Out
+              </span>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>
