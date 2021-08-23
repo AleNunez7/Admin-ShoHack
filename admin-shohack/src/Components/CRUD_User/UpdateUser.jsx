@@ -29,7 +29,7 @@ function UpdateUser() {
     getUser();
   }, []);
 
-  async function handleUpdate() {
+  async function handleUserUpdate() {
     const response = await axios({
       method: "PATCH",
       url: "http://localhost:8000/users/" + params.id,
@@ -49,7 +49,7 @@ function UpdateUser() {
           <div className="col-sm-9">
             <div className="border p-2">
               <h2 className="text-center fw-bold"> MODFICAR USUARIO</h2>
-              <form onSubmit={handleUpdate}>
+              <form onSubmit={handleUserUpdate}>
                 <label htmlFor="">Nombre</label>
                 <input
                   className="w-100 mt-2"

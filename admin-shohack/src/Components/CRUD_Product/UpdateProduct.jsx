@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
-function Update() {
+function UpdateProduct() {
   const [product, setProduct] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -116,4 +116,4 @@ function Update() {
   );
 }
 
-export default Update;
+export default UpdateProduct;
