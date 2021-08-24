@@ -64,7 +64,7 @@ function Home() {
                 <tr>
                   <th>Nombre</th>
                   <th>Descripción</th>
-                  <th>Image</th>
+                  <th>Nombre imagen</th>
                   <th>Precio</th>
                   <th>Stock</th>
                   <th>Categoría</th>
@@ -77,7 +77,7 @@ function Home() {
                     <tr>
                       <th>{product.name}</th>
                       <th>{product.description}</th>
-                      <th>{product.image}</th>
+                      <th>{product.imageName}</th>
                       <th>{product.price}</th>
                       <th>{product.stock}</th>
                       <th>{product.category}</th>

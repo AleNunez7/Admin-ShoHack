@@ -4,6 +4,7 @@ import SidebarMenu from "../Dashboard/SidebarMenu";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import supabase from "../../supabase";
 
 function Create() {
   const history = useHistory();
@@ -11,19 +12,35 @@ function Create() {
   const [error, setError] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [imageName, setImageName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [category, setCategory] = useState("");
 
   const handleProduct = async (ev) => {
+    console.log(ev.target[2].files[0]);
     try {
       ev.preventDefault();
       const response = await axios({
         method: "post",
         url: "http://localhost:8000/products",
-        data: { name, description, image, price, stock, category },
+        data: { name, description, imageName, price, stock, category },
       });
+      if (response) {
+        const image = ev.target[2].files[0];
+        setImageName(ev.target[2].files[0].name);
+        const { data, error } = await supabase.storage
+          .from("image")
+          .upload(`image/${image.name}`, image, {
+            cacheControl: "3600",
+            upsert: false,
+          });
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data);
+        }
+      }
       setProduct(response.data);
       history.push("/dashboard");
     } catch (error) {
@@ -66,8 +83,7 @@ function Create() {
                   className="w-100 mt-2"
                   type="file"
                   name="image"
-                  value={image}
-                  onChange={(ev) => setImage(ev.target.value)}
+                  multiple="false"
                 />
 
                 <label htmlFor="">Precio</label>
