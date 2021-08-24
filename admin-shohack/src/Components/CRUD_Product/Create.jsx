@@ -17,7 +17,7 @@ function Create() {
   const [category, setCategory] = useState("");
 
   const handleProduct = async (ev) => {
-    console.log(ev.target[2].files[0]);
+    console.log(imageName);
     try {
       ev.preventDefault();
       const response = await axios({
@@ -27,7 +27,7 @@ function Create() {
       });
       if (response) {
         const image = ev.target[2].files[0];
-        setImageName(ev.target[2].files[0].name);
+
         const { data, error } = await supabase.storage
           .from("image")
           .upload(`image/${image.name}`, image, {
@@ -81,6 +81,7 @@ function Create() {
                 type="file"
                 name="image"
                 multiple="false"
+                onChange={(ev) => setImageName(ev.target.files[0].name)}
               />
 
               <label htmlFor="">Precio</label>

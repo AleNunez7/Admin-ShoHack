@@ -68,7 +68,7 @@ function ReadProduct() {
                   <tr>
                     <th>{product.name}</th>
                     <th>{product.description}</th>
-                    <th>{product.image}</th>
+                    <th>{product.imageName}</th>
                     <th>{product.price}</th>
                     <th>{product.stock}</th>
                     <th>{product.category}</th>
