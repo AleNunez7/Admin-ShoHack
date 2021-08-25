@@ -31,7 +31,7 @@ function Admin() {
 
   return (
     <form onSubmit={handleSubmit} className="container mt-4">
-      <h3 className="text-center">Admin Panel</h3>
+      <h3 className="text-center">PANEL DE ADMINISTRACION</h3>
 
       <div className="form-group mt-4">
         <label>Usuario</label>

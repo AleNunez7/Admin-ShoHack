@@ -84,32 +84,16 @@ function UpdateUser() {
               />
 
               <label htmlFor="">Role</label>
-              <div className="dropdown text-center d-flex justify-content-start mt-1">
-                <button
-                  className="btn btn-dark dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton2"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Categoria
-                </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark "
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Customer
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Admin
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <br />
+              <select
+                className="btn btn-dark dropdown-toggle"
+                name="role"
+                id="role"
+              >
+                <option value="customer">Cliente</option>
+                <option value="admin">Administrador</option>
+              </select>
+              <br />
               <button class="btn btn-success mt-2">UPDATE</button>
             </form>
           </div>
