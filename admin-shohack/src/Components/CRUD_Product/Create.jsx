@@ -17,7 +17,6 @@ function Create() {
   const [category, setCategory] = useState("");
 
   const handleProduct = async (ev) => {
-    console.log(imageName);
     try {
       ev.preventDefault();
       const response = await axios({

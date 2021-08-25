@@ -94,13 +94,11 @@ function SidebarMenu() {
           aria-labelledby="dropdownUser1"
         >
           <Link className="text-decoration-none" to="/admin">
-            <li>
-              <span
-                onClick={() => dispatch({ type: "REMOVE_USER" })}
-                className="text-white ps-2"
-              >
-                Log Out
-              </span>
+            <li
+              onClick={() => dispatch({ type: "REMOVE_USER" })}
+              className="text-white ps-2"
+            >
+              Log Out
             </li>
           </Link>
         </ul>
