@@ -7,19 +7,29 @@ import UpdateProduct from "./Components/CRUD_Product/UpdateProduct";
 import ReadProduct from "./Components/CRUD_Product/ReadProduct";
 import UpdateUser from "./Components/CRUD_User/UpdateUser";
 import ReadUser from "./Components/CRUD_User/ReadUser";
+import PrivateRoute from "./Components/Route/PrivateRoute";
+import PublicRoute from "./Components/Route/PublicRoute";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/admin" component={Admin} />
-          <Route path="/dashboard" component={Home} />
-          <Route path="/producto/crear" component={Create} />
-          <Route path="/producto/modificar/:id" component={UpdateProduct} />
-          <Route path="/producto" component={ReadProduct} />
-          <Route path="/usuario/modificar/:id" component={UpdateUser} />
-          <Route path="/usuario" component={ReadUser} />
+          <PublicRoute
+            restricted={true}
+            component={Admin}
+            path="/admin"
+            exact
+          />
+          <PrivateRoute component={Home} path="/dashboard" />
+          <PrivateRoute component={Create} path="/producto/crear" />
+          <PrivateRoute
+            component={UpdateProduct}
+            path="/producto/modificar/:id"
+          />
+          <PrivateRoute component={ReadProduct} path="/producto" />
+          <PrivateRoute component={UpdateUser} path="/usuario/modificar/:id" />
+          <PrivateRoute component={ReadUser} path="/usuario" />
         </Switch>
       </BrowserRouter>
     </div>
