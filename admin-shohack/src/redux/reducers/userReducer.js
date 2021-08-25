@@ -8,6 +8,7 @@ function userReducer(user = false, action) {
       return user;
     case "REMOVE_USER":
       return null;
+
     default:
       return user;
   }
