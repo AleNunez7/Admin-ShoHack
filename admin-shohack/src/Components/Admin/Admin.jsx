@@ -30,35 +30,40 @@ function Admin() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="container mt-4">
-      <h3 className="text-center">PANEL DE ADMINISTRACION</h3>
+    <div className="container d-flex justify-content-center my-5">
+      <div className="border p-3 w-50">
+        <form onSubmit={handleSubmit} className="container mt-4">
+          <h3 className="text-center">PANEL DE ADMINISTRACION</h3>
 
-      <div className="form-group mt-4">
-        <label>Usuario</label>
-        <input
-          value={username}
-          onChange={handleUsername}
-          type="text"
-          className="form-control"
-          placeholder="Ingrese usuario"
-        />
+          <div className="form-group mt-4">
+            <label>Usuario</label>
+            <input
+              value={username}
+              onChange={handleUsername}
+              type="text"
+              className="form-control"
+              placeholder="Ingrese usuario"
+            />
+          </div>
+
+          <div className="form-group mt-4">
+            <label>Contraseña</label>
+            <input
+              value={password}
+              onChange={handlePassword}
+              type="password"
+              className="form-control"
+              placeholder="Ingrese su contraseña"
+            />
+          </div>
+          <div className="text-center">
+            <button type="submit" className="btn btn-primary btn-block mt-4">
+              Ingresar
+            </button>
+          </div>
+        </form>
       </div>
-
-      <div className="form-group mt-4">
-        <label>Contraseña</label>
-        <input
-          value={password}
-          onChange={handlePassword}
-          type="password"
-          className="form-control"
-          placeholder="Ingrese su contraseña"
-        />
-      </div>
-
-      <button type="submit" className="btn btn-primary btn-block mt-4">
-        Ingresar
-      </button>
-    </form>
+    </div>
   );
 }
 
