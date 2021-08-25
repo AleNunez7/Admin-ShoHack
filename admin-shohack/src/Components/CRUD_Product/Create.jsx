@@ -41,7 +41,7 @@ function Create() {
         }
       }
       setProduct(response.data);
-      history.push("/dashboard");
+      history.push("/producto");
     } catch (error) {
       setError("Error, intente nuevamente");
     }
