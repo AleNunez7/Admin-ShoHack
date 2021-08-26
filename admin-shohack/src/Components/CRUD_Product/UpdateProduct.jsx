@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../Dashboard/Navbar";
 import SidebarMenu from "../Dashboard/SidebarMenu";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -15,6 +14,7 @@ function UpdateProduct() {
   const [category, setCategory] = useState("");
   const params = useParams();
   const history = useHistory();
+  console.log(params.id);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -37,7 +37,8 @@ function UpdateProduct() {
       url: "http://localhost:8000/products/" + params.id,
       data: { name, description, price, stock, category },
     });
-    history.push("/dashboard");
+    setProduct(response.data);
+    history.push("/producto");
   }
 
   return (
@@ -55,7 +56,7 @@ function UpdateProduct() {
                 className="w-100 mt-2"
                 type="text"
                 name="name"
-                value={name}
+                value={name && name}
                 onChange={(ev) => setName(ev.target.value)}
               />
 
