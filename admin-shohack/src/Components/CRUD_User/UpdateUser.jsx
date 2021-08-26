@@ -12,7 +12,6 @@ function UpdateUser() {
   const [role, setRole] = useState("");
   const params = useParams();
   const history = useHistory();
-
   useEffect(() => {
     const getUser = async () => {
       const response = await axios({
@@ -34,7 +33,7 @@ function UpdateUser() {
       url: "http://localhost:8000/users/" + params.id,
       data: { firstname, lastname, username, email, role },
     });
-    history.push("/dashboard");
+    history.push("/usuario");
   }
 
   return (
@@ -86,6 +85,7 @@ function UpdateUser() {
               <label htmlFor="">Role</label>
               <br />
               <select
+                onChange={(ev) => setRole(ev.target.value)}
                 className="btn btn-dark dropdown-toggle"
                 name="role"
                 id="role"
