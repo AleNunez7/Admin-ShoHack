@@ -31,12 +31,14 @@ function UpdateProduct() {
     getProduct();
   }, []);
 
-  async function handleUpdate() {
+  async function handleUpdate(ev) {
+    ev.preventDefault();
     const response = await axios({
       method: "PATCH",
       url: "http://localhost:8000/products/" + params.id,
       data: { name, description, price, stock, category },
     });
+    console.log("entre aca");
     setProduct(response.data);
     history.push("/producto");
   }
@@ -50,7 +52,7 @@ function UpdateProduct() {
         <div className="col-sm-9">
           <div className="border p-2">
             <h2 className="text-center fw-bold"> MODFICAR PRODUCTO</h2>
-            <form onSubmit={handleUpdate}>
+            <form onSubmit={(ev) => handleUpdate(ev)}>
               <label htmlFor="">Nombre</label>
               <input
                 className="w-100 mt-2"
