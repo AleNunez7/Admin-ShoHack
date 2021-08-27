@@ -32,7 +32,7 @@ function SidebarMenu() {
   }, [btnMenuLogOut]);
 
   return (
-    <div className="d-flex flex-column p-3 text-white bg-dark position-fixed sideBarMenu">
+    <div className="d-flex flex-column p-3 text-white bg-dark sideBarMenu">
       <a
         href="/dashboard"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
