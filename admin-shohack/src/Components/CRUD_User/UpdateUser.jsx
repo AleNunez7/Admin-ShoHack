@@ -27,6 +27,7 @@ function UpdateUser() {
       setLastname(response.data.lastname);
       setUsername(response.data.username);
       setEmail(response.data.email);
+      setRole(response.data.role);
     };
     getUser();
   }, []);
@@ -39,9 +40,7 @@ function UpdateUser() {
       url: "http://localhost:8000/users/" + params.id,
       data: { firstname, lastname, username, email, role },
     });
-    console.log("estoy aca");
-    dispatch({ type: "UPDATE_ROLE", payload: role });
-    /* history.push("/usuario"); */
+    history.push("/usuario");
   }
 
   useEffect(() => {
@@ -112,7 +111,7 @@ function UpdateUser() {
                 id="role"
               >
                 {roles.map((item) => {
-                  return user.role === item._id.toString() ? (
+                  return role === item._id.toString() ? (
                     <option value={item._id} selected>
                       {item.name}
                     </option>

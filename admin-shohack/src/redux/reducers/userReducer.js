@@ -9,9 +9,6 @@ function userReducer(user = false, action) {
     case "REMOVE_USER":
       return null;
 
-    case "UPDATE_ROLE":
-      return { ...user, role: action.payload };
-
     default:
       return user;
   }
