@@ -20,7 +20,7 @@ function ReadUser() {
   }
 
   useEffect(() => {
-    const getProduct = async () => {
+    const getUser = async () => {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/",
@@ -30,7 +30,7 @@ function ReadUser() {
       });
       setUsers(response.data.users);
     };
-    getProduct();
+    getUser();
   }, []);
 
   return (
@@ -60,7 +60,7 @@ function ReadUser() {
                     <th>{user.lastname}</th>
                     <th>{user.username}</th>
                     <th>{user.email}</th>
-                    <th>{user.role}</th>
+                    <th>{user.role.name}</th>
 
                     <th>
                       <Link

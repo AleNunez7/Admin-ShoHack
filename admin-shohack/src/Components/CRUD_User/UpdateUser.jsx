@@ -1,15 +1,20 @@
 import React from "react";
 import SidebarMenu from "../Dashboard/SidebarMenu";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
 function UpdateUser() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [firstname, setFisrtname] = useState("");
   const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
+  const [roles, setRoles] = useState([]);
+  console.log(role);
   const params = useParams();
   const history = useHistory();
   useEffect(() => {
@@ -22,20 +27,36 @@ function UpdateUser() {
       setLastname(response.data.lastname);
       setUsername(response.data.username);
       setEmail(response.data.email);
-      setRole(response.data.role);
     };
     getUser();
   }, []);
 
-  async function handleUserUpdate() {
+  async function handleUserUpdate(ev) {
+    ev.preventDefault();
+
     const response = await axios({
       method: "PATCH",
       url: "http://localhost:8000/users/" + params.id,
       data: { firstname, lastname, username, email, role },
     });
-    history.push("/usuario");
+    console.log("estoy aca");
+    dispatch({ type: "UPDATE_ROLE", payload: role });
+    /* history.push("/usuario"); */
   }
 
+  useEffect(() => {
+    const getRole = async () => {
+      const response = await axios({
+        method: "GET",
+        url: "http://localhost:8000/role",
+        data: { role },
+      });
+      setRoles(response.data);
+    };
+
+    getRole();
+  }, []);
+  console.log(user);
   return (
     <>
       <div className="row">
@@ -45,7 +66,7 @@ function UpdateUser() {
         <div className="col-sm-9">
           <div className="border p-2">
             <h2 className="text-center fw-bold"> MODFICAR USUARIO</h2>
-            <form onSubmit={handleUserUpdate}>
+            <form onSubmit={(ev) => handleUserUpdate(ev)}>
               <label htmlFor="">Nombre</label>
               <input
                 className="w-100 mt-2"
@@ -90,8 +111,15 @@ function UpdateUser() {
                 name="role"
                 id="role"
               >
-                <option value="customer">Cliente</option>
-                <option value="admin">Administrador</option>
+                {roles.map((item) => {
+                  return user.role === item._id.toString() ? (
+                    <option value={item._id} selected>
+                      {item.name}
+                    </option>
+                  ) : (
+                    <option value={item._id}>{item.name}</option>
+                  );
+                })}
               </select>
               <br />
               <button class="btn btn-success mt-2">UPDATE</button>
