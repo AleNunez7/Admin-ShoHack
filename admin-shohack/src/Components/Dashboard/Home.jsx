@@ -7,18 +7,15 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <>
-      <div className="row">
-        <div className="col-sm-6">
-          <SidebarMenu />
-        </div>
-
-        <div className="col-sm-6 mt-5">
-          <h2>ADMINISTRADOR</h2>
-          <img src="grafica-circular.png " alt="" />
-        </div>
+    <div className="d-flex justify-content">
+      <div>
+        <SidebarMenu />
       </div>
-    </>
+
+      <div className="mx-auto w-100 p-2">
+        <h2 className="text-center fw-bold fs-3">ADMINISTRADOR</h2>
+      </div>
+    </div>
   );
 }
 

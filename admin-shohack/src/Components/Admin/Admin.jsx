@@ -25,13 +25,19 @@ function Admin() {
       data: { username, password },
     });
     response.data.user.token = await response.data.token;
-    dispatch({ type: "ADD_USER", payload: response.data.user });
-    history.push("/dashboard");
+    console.log(response.data.user);
+    if (response.data.user.role === "6128f0ecd447f42a783a777f") {
+      dispatch({ type: "ADD_USER", payload: response.data.user });
+      history.push("/dashboard");
+    } else {
+      console.log("no tenes permisios");
+      history.push("/admin");
+    }
   };
 
   return (
     <div className="container d-flex justify-content-center my-5">
-      <div className="border p-3 w-50">
+      <div className="p-3 w-50">
         <form onSubmit={handleSubmit} className="container mt-4">
           <h3 className="text-center">PANEL DE ADMINISTRACION</h3>
 

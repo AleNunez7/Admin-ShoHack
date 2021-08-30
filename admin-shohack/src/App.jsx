@@ -9,6 +9,9 @@ import UpdateUser from "./Components/CRUD_User/UpdateUser";
 import ReadUser from "./Components/CRUD_User/ReadUser";
 import PrivateRoute from "./Components/Route/PrivateRoute";
 import PublicRoute from "./Components/Route/PublicRoute";
+import ReadRole from "./Components/CRUD_Role/ReadRole";
+import CreateRole from "./Components/CRUD_Role/CreateRole";
+import UpdateRole from "./Components/CRUD_Role/UpdateRole";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
           <PrivateRoute component={ReadProduct} path="/producto" />
           <PrivateRoute component={UpdateUser} path="/usuario/modificar/:id" />
           <PrivateRoute component={ReadUser} path="/usuario" />
+          <PrivateRoute component={CreateRole} path="/role/crear" />
+          <PrivateRoute component={ReadRole} path="/role" />
+          <PrivateRoute component={UpdateRole} path="/role/modificar/:id" />
         </Switch>
       </BrowserRouter>
     </div>

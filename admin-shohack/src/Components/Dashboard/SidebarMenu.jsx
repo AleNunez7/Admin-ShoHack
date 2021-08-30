@@ -37,13 +37,17 @@ function SidebarMenu() {
         href="/dashboard"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
-        <svg className="bi me-2" width="40" height="32"></svg>
+        <svg className="bi" width="40" height="32"></svg>
         <span className="fs-4">SHOHACK</span>
       </a>
       <hr />
-      <ul className="nav nav-pills flex-column mb-auto">
+      <ul className="nav nav-pills flex-column mb-auto fs-5">
         <li className="nav-item">
-          <a href="/dashboard" className="nav-link active" aria-current="page">
+          <a
+            href="/dashboard"
+            className="nav-link text-white"
+            aria-current="page"
+          >
             <svg className="bi me-2" width="16" height="16"></svg>
             Home
           </a>
@@ -68,6 +72,12 @@ function SidebarMenu() {
           >
             <svg className="bi me-2" width="16" height="16"></svg>
             Usuario
+          </Link>
+        </li>
+        <li>
+          <Link to="/role" className="nav-link" className="nav-link text-white">
+            <svg className="bi me-2" width="16" height="16"></svg>
+            Role
           </Link>
         </li>
       </ul>
