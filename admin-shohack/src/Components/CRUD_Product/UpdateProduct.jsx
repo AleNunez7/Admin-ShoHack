@@ -14,7 +14,6 @@ function UpdateProduct() {
   const [category, setCategory] = useState("");
   const params = useParams();
   const history = useHistory();
-  console.log(params.id);
 
   useEffect(() => {
     const getProduct = async () => {

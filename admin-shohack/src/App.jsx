@@ -34,8 +34,8 @@ function App() {
           <PrivateRoute component={UpdateUser} path="/usuario/modificar/:id" />
           <PrivateRoute component={ReadUser} path="/usuario" />
           <PrivateRoute component={CreateRole} path="/role/crear" />
-          <PrivateRoute component={ReadRole} path="/role" />
           <PrivateRoute component={UpdateRole} path="/role/modificar/:id" />
+          <PrivateRoute component={ReadRole} path="/role" />
         </Switch>
       </BrowserRouter>
     </div>

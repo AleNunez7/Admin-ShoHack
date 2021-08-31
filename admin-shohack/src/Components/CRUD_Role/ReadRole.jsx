@@ -2,10 +2,24 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SidebarMenu from "../Dashboard/SidebarMenu";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 function ReadRole() {
   const [roles, setRoles] = useState([]);
+  const user = useSelector((state) => state.user);
+
+  function handleRoleDelete(roleToDelete) {
+    axios({
+      method: "delete",
+      url: "http://localhost:8000/role/" + roleToDelete._id,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    setRoles((roles) => roles.filter((role) => role._id !== roleToDelete._id));
+  }
+
   useEffect(() => {
     const getRole = async () => {
       const response = await axios({
@@ -47,7 +61,10 @@ function ReadRole() {
                       <i class="fas fa-edit"></i>
                     </Link>
 
-                    <button className="btn btn-danger text-white">
+                    <button
+                      onClick={() => handleRoleDelete(role)}
+                      className="btn btn-danger text-white"
+                    >
                       <i class="fas fa-trash"></i>
                     </button>
                   </th>

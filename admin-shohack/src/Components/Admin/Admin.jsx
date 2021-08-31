@@ -30,7 +30,6 @@ function Admin() {
       dispatch({ type: "ADD_USER", payload: response.data.user });
       history.push("/dashboard");
     } else {
-      console.log("no tenes permisios");
       history.push("/admin");
     }
   };
