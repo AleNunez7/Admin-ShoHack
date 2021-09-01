@@ -44,16 +44,16 @@ function ReadRole() {
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Acción</th>
+              <th className="nameWidth">Nombre</th>
+              <th className="actionWidth">Acción</th>
             </tr>
           </thead>
           <tbody>
             {roles.map((role) => {
               return (
                 <tr>
-                  <th>{role.name}</th>
-                  <th>
+                  <th className="nameWidth">{role.name}</th>
+                  <th className="actionWidth">
                     <Link
                       to={`/role/modificar/${role._id}`}
                       className="btn btn-primary text-white me-2"

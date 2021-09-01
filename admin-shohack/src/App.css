@@ -2,3 +2,11 @@
   width: 280px;
   height: 100vh;
 }
+
+.nameWidth {
+  width: calc(100%-150px);
+}
+
+.actionWidth {
+  width: 150px;
+}
