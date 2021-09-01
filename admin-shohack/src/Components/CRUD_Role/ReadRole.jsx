@@ -62,7 +62,10 @@ function ReadRole() {
                     </Link>
 
                     <button
-                      onClick={() => handleRoleDelete(role)}
+                      onClick={() => {
+                        if (window.confirm("¿Está seguro de borrar el rol?"))
+                          handleRoleDelete(role);
+                      }}
                       className="btn btn-danger text-white"
                     >
                       <i class="fas fa-trash"></i>

@@ -17,9 +17,7 @@ function ReadProduct() {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    setProducts((products) =>
-      products.filter((product) => product._id !== productToDelete._id)
-    );
+    setProducts((products) => products.filter((product) => product._id !== productToDelete._id));
   }
 
   useEffect(() => {
@@ -43,10 +41,7 @@ function ReadProduct() {
       </div>
       <div className="mx-auto w-100 p-2">
         <p className="text-center fw-bold fs-3">PRODUCTOS</p>
-        <Link
-          to={"/producto/crear"}
-          className="btn btn-primary text-white me-2"
-        >
+        <Link to={"/producto/crear"} className="btn btn-primary text-white me-2">
           Agregar producto
         </Link>
         <table class="table table-striped">
@@ -80,7 +75,10 @@ function ReadProduct() {
                     </Link>
 
                     <button
-                      onClick={() => handleProductDelete(product)}
+                      onClick={() => {
+                        if (window.confirm("¿Está seguro de borrar el producto?"))
+                          handleProductDelete(product);
+                      }}
                       className="btn btn-danger text-white"
                     >
                       <i class="fas fa-trash"></i>
