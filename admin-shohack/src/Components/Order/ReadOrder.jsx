@@ -46,7 +46,7 @@ function ReadOrder() {
             {orders.map((order) => {
               return (
                 <tr>
-                  <th>1</th>
+                  <th>{order._id}</th>
                   <th>20/07/21</th>
                   <th>{order.user}</th>
                   <th>$ {order.totalPrice}</th>
