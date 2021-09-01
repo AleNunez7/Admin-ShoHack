@@ -53,10 +53,10 @@ function SidebarMenu() {
           </a>
         </li>
         <li>
-          <a href="#" className="nav-link text-white">
+          <Link to="/orden" className="nav-link text-white">
             <svg className="bi me-2" width="16" height="16"></svg>
             Ordenes
-          </a>
+          </Link>
         </li>
         <li>
           <Link to="/producto" className="nav-link text-white">
