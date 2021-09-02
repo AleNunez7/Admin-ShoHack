@@ -37,7 +37,7 @@ function Admin() {
       if (error) {
         console.log(error);
         const closeAfter7 = () =>
-          toast("Credenciales incorrectas, por favor vuelva a ingresar sus datos.", {
+          toast.warning("Credenciales incorrectas, por favor vuelva a ingresar sus datos.", {
             position: toast.POSITION.TOP_RIGHT,
           });
         closeAfter7();
@@ -78,7 +78,7 @@ function Admin() {
             </button>
           </div>
         </form>
-        <ToastContainer bottom-right autoClose={4000} />
+        <ToastContainer autoClose={4000} />
       </div>
     </div>
   );
