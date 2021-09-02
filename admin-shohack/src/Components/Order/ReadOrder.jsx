@@ -101,16 +101,18 @@ function ReadOrder() {
         <Modal.Body>
           <h4>{clickedOrder.user} - 20/07/21 </h4>
           <hr />
-          {orderList.map((order) => {
-            return (
-              <div className="py-2">
-                <p className="fw-bold">{order.name}</p>
-                <p>$ {order.price}</p>
-                <p>x {order.quantity}</p>
-              </div>
-            );
-          })}
+          {orderList &&
+            orderList.map((order) => {
+              return (
+                <div className="py-2 ms-3">
+                  <p className="fw-bold">{order.name}</p>
+                  <p>$ {order.price}</p>
+                  <p>Cantidad: {order.quantity}</p>
+                </div>
+              );
+            })}
           <hr />
+          <p className="fw-bold">TOTAL: $ {clickedOrder.totalPrice}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button className="btn btn-dark text-white" onClick={handleClose}>
