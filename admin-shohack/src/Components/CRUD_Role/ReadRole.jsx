@@ -56,7 +56,7 @@ function ReadRole() {
                   <th className="actionWidth">
                     <Link
                       to={`/role/modificar/${role._id}`}
-                      className="btn btn-primary text-white me-2"
+                      className="btn btn-dark text-white me-2"
                     >
                       <i class="fas fa-edit"></i>
                     </Link>

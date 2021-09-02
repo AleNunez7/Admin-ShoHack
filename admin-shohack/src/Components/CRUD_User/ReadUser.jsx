@@ -59,19 +59,25 @@ function ReadUser() {
                   <th>{user.lastname}</th>
                   <th>{user.username}</th>
                   <th>{user.email}</th>
-                  <th>{user.role === "6128f0ecd447f42a783a777f" ? "Administrador" : "Cliente"}</th>
+                  <th>
+                    {user.role === "6128f0ecd447f42a783a777f"
+                      ? "Administrador"
+                      : "Cliente"}
+                  </th>
 
                   <th>
                     <Link
                       to={`/usuario/modificar/${user._id}`}
-                      className="btn btn-primary text-white me-2"
+                      className="btn btn-dark text-white me-2"
                     >
                       <i class="fas fa-edit"></i>
                     </Link>
 
                     <button
                       onClick={() => {
-                        if (window.confirm("¿Está seguro de borrar el usuario?"))
+                        if (
+                          window.confirm("¿Está seguro de borrar el usuario?")
+                        )
                           handleUserDelete(user);
                       }}
                       className="btn btn-danger text-white"

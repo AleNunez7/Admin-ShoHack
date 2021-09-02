@@ -17,7 +17,9 @@ function ReadProduct() {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    setProducts((products) => products.filter((product) => product._id !== productToDelete._id));
+    setProducts((products) =>
+      products.filter((product) => product._id !== productToDelete._id)
+    );
   }
 
   useEffect(() => {
@@ -53,7 +55,7 @@ function ReadProduct() {
               <th>Precio</th>
               <th>Stock</th>
               <th>Categoría</th>
-              <th>Acción</th>
+              <th className="actionWidth">Acción</th>
             </tr>
           </thead>
           <tbody>
@@ -66,17 +68,19 @@ function ReadProduct() {
                   <th>{product.price}</th>
                   <th>{product.stock}</th>
                   <th>{product.category}</th>
-                  <th>
+                  <th className="actionWidth">
                     <Link
                       to={`/producto/modificar/${product._id}`}
-                      className="btn btn-primary text-white me-2"
+                      className="btn btn-dark text-white me-2"
                     >
                       <i class="fas fa-edit"></i>
                     </Link>
 
                     <button
                       onClick={() => {
-                        if (window.confirm("¿Está seguro de borrar el producto?"))
+                        if (
+                          window.confirm("¿Está seguro de borrar el producto?")
+                        )
                           handleProductDelete(product);
                       }}
                       className="btn btn-danger text-white"
