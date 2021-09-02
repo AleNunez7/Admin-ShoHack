@@ -60,7 +60,7 @@ function ReadOrder() {
                 return (
                   <tr>
                     <th>{order._id}</th>
-                    <th>20/07/21</th>
+                    <th>{order.date}</th>
                     <th>{order.user}</th>
                     <th>$ {order.totalPrice}</th>
                     <th>{order.state}</th>
@@ -99,7 +99,9 @@ function ReadOrder() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>{clickedOrder.user} - 20/07/21 </h4>
+          <h4>
+            {clickedOrder.user} - {clickedOrder.date}
+          </h4>
           <hr />
           {orderList &&
             orderList.map((order) => {
