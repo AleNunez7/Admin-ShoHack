@@ -38,7 +38,7 @@ function ReadRole() {
       </div>
       <div className="mx-auto w-100 p-2">
         <p className="text-center fw-bold fs-3">ROLE</p>
-        <Link to={"/role/crear"} className="btn btn-primary text-white me-2">
+        <Link to={"/role/crear"} className="btn btn-dark text-white me-2">
           Agregar Role
         </Link>
         <table class="table table-striped">

@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Admin() {
   const dispatch = useDispatch();
@@ -19,18 +21,27 @@ function Admin() {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const response = await axios({
-      method: "POST",
-      url: "http://localhost:8000/tokens",
-      data: { username, password },
-    });
-    response.data.user.token = await response.data.token;
-    console.log(response.data.user);
-    if (response.data.user.role === "6128f0ecd447f42a783a777f") {
-      dispatch({ type: "ADD_USER", payload: response.data.user });
-      history.push("/dashboard");
-    } else {
-      history.push("/admin");
+    try {
+      const response = await axios({
+        method: "POST",
+        url: "http://localhost:8000/tokens",
+        data: { username, password },
+      });
+      response.data.user.token = await response.data.token;
+      console.log(response.data.user);
+      if (response.data.user.role === "6128f0ecd447f42a783a777f") {
+        dispatch({ type: "ADD_USER", payload: response.data.user });
+        history.push("/dashboard");
+      }
+    } catch (error) {
+      if (error) {
+        console.log(error);
+        const closeAfter7 = () =>
+          toast("Credenciales incorrectas, por favor vuelva a ingresar sus datos.", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        closeAfter7();
+      }
     }
   };
 
@@ -38,7 +49,7 @@ function Admin() {
     <div className="container d-flex justify-content-center my-5">
       <div className="p-3 w-50">
         <form onSubmit={handleSubmit} className="container mt-4">
-          <h3 className="text-center">PANEL DE ADMINISTRACION</h3>
+          <h3 className="text-center">PANEL DE ADMINISTRACION DE SHOHACK</h3>
 
           <div className="form-group mt-4">
             <label>Usuario</label>
@@ -62,11 +73,12 @@ function Admin() {
             />
           </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-primary btn-block mt-4">
+            <button type="submit" className="btn btn-dark btn-block mt-4">
               Ingresar
             </button>
           </div>
         </form>
+        <ToastContainer bottom-right autoClose={4000} />
       </div>
     </div>
   );

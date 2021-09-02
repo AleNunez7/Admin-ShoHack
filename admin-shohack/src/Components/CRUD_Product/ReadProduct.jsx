@@ -41,7 +41,7 @@ function ReadProduct() {
       </div>
       <div className="mx-auto w-100 p-2">
         <p className="text-center fw-bold fs-3">PRODUCTOS</p>
-        <Link to={"/producto/crear"} className="btn btn-primary text-white me-2">
+        <Link to={"/producto/crear"} className="btn btn-dark text-white me-2">
           Agregar producto
         </Link>
         <table class="table table-striped">

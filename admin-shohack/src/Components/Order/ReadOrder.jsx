@@ -54,7 +54,7 @@ function ReadOrder() {
                   <th>
                     <Link
                       /* to={`/orden/${order._id}`} */
-                      className="btn btn-primary text-white me-2"
+                      className="btn btn-dark text-white me-2"
                     >
                       Ver orden
                     </Link>
