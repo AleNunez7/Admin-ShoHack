@@ -21,7 +21,7 @@ function Create() {
       ev.preventDefault();
       const response = await axios({
         method: "post",
-        url: "http://localhost:8000/products",
+        url: process.env.REACT_APP_API_URL + "/products",
         data: { name, description, imageName, price, stock, category },
       });
       if (response) {

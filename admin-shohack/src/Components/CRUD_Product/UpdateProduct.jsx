@@ -19,7 +19,7 @@ function UpdateProduct() {
     const getProduct = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/products/" + params.id,
+        url: process.env.REACT_APP_API_URL + "/products/" + params.id,
       });
       setName(response.data.name);
       setDescription(response.data.description);
@@ -34,7 +34,7 @@ function UpdateProduct() {
     ev.preventDefault();
     const response = await axios({
       method: "PATCH",
-      url: "http://localhost:8000/products/" + params.id,
+      url: process.env.REACT_APP_API_URL + "/products/" + params.id,
       data: { name, description, price, stock, category },
     });
     console.log("entre aca");

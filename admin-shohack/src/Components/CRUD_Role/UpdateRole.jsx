@@ -13,7 +13,7 @@ function UpdateRole() {
     const getRole = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/role/" + params.id,
+        url: process.env.REACT_APP_API_URL + "/role/" + params.id,
       });
       console.log(response.data);
       setName(response.data.name);
@@ -25,7 +25,7 @@ function UpdateRole() {
     ev.preventDefault();
     const response = await axios({
       method: "PATCH",
-      url: "http://localhost:8000/role/" + params.id,
+      url: "process.env.REACT_APP_API_URL + "/role/" + params.id,
       data: { name },
     });
     history.push("/role");

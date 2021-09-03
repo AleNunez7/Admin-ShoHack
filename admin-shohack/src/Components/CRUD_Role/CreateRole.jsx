@@ -14,7 +14,7 @@ function CreateRole() {
       ev.preventDefault();
       const response = await axios({
         method: "post",
-        url: "http://localhost:8000/role",
+        url: process.env.REACT_APP_API_URL + "/role",
         data: { name },
       });
       history.push("/role");

@@ -24,7 +24,7 @@ function Admin() {
     try {
       const response = await axios({
         method: "POST",
-        url: "http://localhost:8000/tokens",
+        url: process.env.REACT_APP_API_URL + "/tokens",
         data: { username, password },
       });
       response.data.user.token = await response.data.token;
@@ -37,9 +37,12 @@ function Admin() {
       if (error) {
         console.log(error);
         const closeAfter7 = () =>
-          toast.warning("Credenciales incorrectas, por favor vuelva a ingresar sus datos.", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          toast.warning(
+            "Credenciales incorrectas, por favor vuelva a ingresar sus datos.",
+            {
+              position: toast.POSITION.TOP_RIGHT,
+            }
+          );
         closeAfter7();
       }
     }

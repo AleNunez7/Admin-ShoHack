@@ -21,7 +21,7 @@ function UpdateUser() {
     const getUser = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/users/" + params.id,
+        url: process.env.REACT_APP_API_URL + "/users/" + params.id,
       });
       setFisrtname(response.data.firstname);
       setLastname(response.data.lastname);
@@ -37,7 +37,7 @@ function UpdateUser() {
 
     const response = await axios({
       method: "PATCH",
-      url: "http://localhost:8000/users/" + params.id,
+      url: process.env.REACT_APP_API_URL + "/users/" + params.id,
       data: { firstname, lastname, username, email, role },
     });
     history.push("/usuario");
@@ -47,7 +47,7 @@ function UpdateUser() {
     const getRole = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/role",
+        url: process.env.REACT_APP_API_URL + "/role",
         data: { role },
       });
       setRoles(response.data);

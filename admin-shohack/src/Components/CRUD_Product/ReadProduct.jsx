@@ -12,7 +12,7 @@ function ReadProduct() {
   function handleProductDelete(productToDelete) {
     axios({
       method: "delete",
-      url: "http://localhost:8000/products/" + productToDelete._id,
+      url: process.env.REACT_APP_API_URL + "/products/" + productToDelete._id,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -26,7 +26,7 @@ function ReadProduct() {
     const getProduct = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/",
+        url: process.env.REACT_APP_API_URL,
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

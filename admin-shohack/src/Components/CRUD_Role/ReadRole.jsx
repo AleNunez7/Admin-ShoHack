@@ -12,7 +12,7 @@ function ReadRole() {
   function handleRoleDelete(roleToDelete) {
     axios({
       method: "delete",
-      url: "http://localhost:8000/role/" + roleToDelete._id,
+      url: process.env.REACT_APP_API_URL + "/role/" + roleToDelete._id,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -24,7 +24,7 @@ function ReadRole() {
     const getRole = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/role",
+        url: process.env.REACT_APP_API_URL + "/role",
         data: { roles },
       });
       setRoles(response.data);

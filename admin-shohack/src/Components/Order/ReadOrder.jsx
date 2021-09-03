@@ -25,7 +25,7 @@ function ReadOrder() {
     const getOrder = async () => {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/order",
+        url: process.env.REACT_APP_API_URL + "/order",
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
