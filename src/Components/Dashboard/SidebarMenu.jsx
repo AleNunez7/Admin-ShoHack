@@ -65,7 +65,7 @@ function SidebarMenu() {
           <Dropdown.Item
             className="ps-2"
             onClick={() => dispatch({ type: "REMOVE_USER" })}
-            href="#/action-1"
+            href="/"
           >
             Log out
           </Dropdown.Item>
