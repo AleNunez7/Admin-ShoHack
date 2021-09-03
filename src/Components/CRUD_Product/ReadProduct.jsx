@@ -34,7 +34,7 @@ function ReadProduct() {
       setProducts(response.data.products);
     };
     getProduct();
-  }, []);
+  }, [user.token]);
 
   return (
     <div className="d-flex justify-content">
@@ -46,7 +46,7 @@ function ReadProduct() {
         <Link to={"/producto/crear"} className="btn btn-dark text-white me-2">
           Agregar producto
         </Link>
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -61,7 +61,7 @@ function ReadProduct() {
           <tbody>
             {products.map((product) => {
               return (
-                <tr>
+                <tr key={product._id}>
                   <th>{product.name}</th>
                   <th>{product.description}</th>
                   <th>{product.imageName}</th>
@@ -73,7 +73,7 @@ function ReadProduct() {
                       to={`/producto/modificar/${product._id}`}
                       className="btn btn-dark text-white me-2"
                     >
-                      <i class="fas fa-edit"></i>
+                      <i className="fas fa-edit"></i>
                     </Link>
 
                     <button
@@ -85,7 +85,7 @@ function ReadProduct() {
                       }}
                       className="btn btn-danger text-white"
                     >
-                      <i class="fas fa-trash"></i>
+                      <i className="fas fa-trash"></i>
                     </button>
                   </th>
                 </tr>

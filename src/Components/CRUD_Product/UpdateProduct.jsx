@@ -5,7 +5,6 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
 function UpdateProduct() {
-  const [product, setProduct] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -28,17 +27,15 @@ function UpdateProduct() {
       setCategory(response.data.category);
     };
     getProduct();
-  }, []);
+  }, [params.id]);
 
   async function handleUpdate(ev) {
     ev.preventDefault();
-    const response = await axios({
+    await axios({
       method: "PATCH",
       url: process.env.REACT_APP_API_URL + "/products/" + params.id,
       data: { name, description, price, stock, category },
     });
-    console.log("entre aca");
-    setProduct(response.data);
     history.push("/producto");
   }
 
@@ -105,7 +102,7 @@ function UpdateProduct() {
               onChange={(ev) => setCategory(ev.target.value)}
             />
 
-            <button class="btn btn-success mt-2">UPDATE</button>
+            <button className="btn btn-success mt-2">UPDATE</button>
           </form>
         </div>
       </div>

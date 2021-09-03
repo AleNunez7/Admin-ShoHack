@@ -3,7 +3,7 @@ import SidebarMenu from "../Dashboard/SidebarMenu";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import ShowOrder from "./ShowOrder";
+
 import { Modal, Button } from "react-bootstrap";
 
 function ReadOrder() {
@@ -19,7 +19,6 @@ function ReadOrder() {
   };
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const getOrder = async () => {
@@ -30,11 +29,10 @@ function ReadOrder() {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      console.log(response.data);
       setOrders(response.data);
     };
     getOrder();
-  }, []);
+  }, [user.token]);
 
   return (
     <>
@@ -44,7 +42,7 @@ function ReadOrder() {
         </div>
         <div className="mx-auto w-100 p-2">
           <p className="text-center fw-bold fs-3">ORDENES</p>
-          <table class="table table-striped">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>Numero de orden</th>
@@ -58,7 +56,7 @@ function ReadOrder() {
             <tbody>
               {orders.map((order) => {
                 return (
-                  <tr>
+                  <tr key={order._id}>
                     <th>{order._id}</th>
                     <th>{order.date}</th>
                     <th>{order.user}</th>
@@ -79,13 +77,6 @@ function ReadOrder() {
           </table>
         </div>
       </div>
-      {/* <ShowOrder
-        Show={Show}
-        setShow={setShow}
-        handleClose={handleClose}
-        handleShow={handleShow}
-        clickedOrder={clickedOrder}
-      /> */}
       <Modal
         show={Show}
         onHide={handleClose}
@@ -106,7 +97,7 @@ function ReadOrder() {
           {orderList &&
             orderList.map((order) => {
               return (
-                <div className="py-2 ms-3">
+                <div key={order._id} className="py-2 ms-3">
                   <p className="fw-bold">{order.name}</p>
                   <p>$ {order.price}</p>
                   <p>Cantidad: {order.quantity}</p>

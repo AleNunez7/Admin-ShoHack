@@ -15,15 +15,14 @@ function UpdateRole() {
         method: "GET",
         url: process.env.REACT_APP_API_URL + "/role/" + params.id,
       });
-      console.log(response.data);
       setName(response.data.name);
     };
     getRole();
-  }, []);
+  }, [params.id]);
 
   async function handleUpdate(ev) {
     ev.preventDefault();
-    const response = await axios({
+    await axios({
       method: "PATCH",
       url: process.env.REACT_APP_API_URL + "/role/" + params.id,
       data: { name },
@@ -48,7 +47,7 @@ function UpdateRole() {
               value={name}
               onChange={(ev) => setName(ev.target.value)}
             />
-            <button class="btn btn-success mt-2">UPDATE</button>
+            <button className="btn btn-success mt-2">UPDATE</button>
           </form>
         </div>
       </div>

@@ -7,8 +7,6 @@ import supabase from "../../supabase";
 
 function Create() {
   const history = useHistory();
-  const [product, setProduct] = useState([]);
-  const [error, setError] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [imageName, setImageName] = useState("");
@@ -39,10 +37,9 @@ function Create() {
           console.log(data);
         }
       }
-      setProduct(response.data);
       history.push("/producto");
     } catch (error) {
-      setError("Error, intente nuevamente");
+      alert("Error, intente nuevamente");
     }
   };
 
@@ -78,7 +75,6 @@ function Create() {
               className="w-100 mt-2"
               type="file"
               name="image"
-              multiple="false"
               onChange={(ev) => setImageName(ev.target.files[0].name)}
             />
 
@@ -109,7 +105,7 @@ function Create() {
               onChange={(ev) => setCategory(ev.target.value)}
             />
 
-            <button class="btn btn-success mt-2">CREAR</button>
+            <button className="btn btn-success mt-2">CREAR</button>
           </form>
         </div>
       </div>

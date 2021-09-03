@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import React from "react";
 import Admin from "./Components/Admin/Admin";
 import Home from "./Components/Dashboard/Home";

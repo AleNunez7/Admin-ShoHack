@@ -6,20 +6,19 @@ import axios from "axios";
 
 function CreateRole() {
   const [name, setName] = useState("");
-  const [error, setError] = useState(false);
   const history = useHistory();
 
   const handleRole = async (ev) => {
     try {
       ev.preventDefault();
-      const response = await axios({
+      await axios({
         method: "post",
         url: process.env.REACT_APP_API_URL + "/role",
         data: { name },
       });
       history.push("/role");
     } catch (error) {
-      setError("Error, intente nuevamente");
+      alert("Error, intente nuevamente");
     }
   };
   return (
@@ -39,7 +38,7 @@ function CreateRole() {
               value={name}
               onChange={(ev) => setName(ev.target.value)}
             />
-            <button class="btn btn-success mt-2">CREAR</button>
+            <button className="btn btn-success mt-2">CREAR</button>
           </form>
         </div>
       </div>

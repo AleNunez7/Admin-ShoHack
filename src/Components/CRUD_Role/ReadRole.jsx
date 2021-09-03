@@ -25,7 +25,6 @@ function ReadRole() {
       const response = await axios({
         method: "GET",
         url: process.env.REACT_APP_API_URL + "/role",
-        data: { roles },
       });
       setRoles(response.data);
     };
@@ -41,7 +40,7 @@ function ReadRole() {
         <Link to={"/role/crear"} className="btn btn-dark text-white me-2">
           Agregar Role
         </Link>
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th className="nameWidth">Nombre</th>
@@ -51,14 +50,14 @@ function ReadRole() {
           <tbody>
             {roles.map((role) => {
               return (
-                <tr>
+                <tr key={role._id}>
                   <th className="nameWidth">{role.name}</th>
                   <th className="actionWidth">
                     <Link
                       to={`/role/modificar/${role._id}`}
                       className="btn btn-dark text-white me-2"
                     >
-                      <i class="fas fa-edit"></i>
+                      <i className="fas fa-edit"></i>
                     </Link>
 
                     <button
@@ -68,7 +67,7 @@ function ReadRole() {
                       }}
                       className="btn btn-danger text-white"
                     >
-                      <i class="fas fa-trash"></i>
+                      <i className="fas fa-trash"></i>
                     </button>
                   </th>
                 </tr>

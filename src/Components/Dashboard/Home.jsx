@@ -1,9 +1,5 @@
 import React from "react";
 import SidebarMenu from "./SidebarMenu";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { Link } from "react-router-dom";
 
 function Home() {
   return (

@@ -31,7 +31,7 @@ function ReadUser() {
       setUsers(response.data.users);
     };
     getUser();
-  }, []);
+  }, [user.token]);
 
   return (
     <div className="d-flex justify-content">
@@ -40,7 +40,7 @@ function ReadUser() {
       </div>
       <div className="mx-auto w-100 p-2">
         <p className="text-center fw-bold fs-3">USUARIOS</p>
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -54,7 +54,7 @@ function ReadUser() {
           <tbody>
             {users.map((user) => {
               return (
-                <tr>
+                <tr key={user._id}>
                   <th>{user.firstname}</th>
                   <th>{user.lastname}</th>
                   <th>{user.username}</th>
@@ -70,7 +70,7 @@ function ReadUser() {
                       to={`/usuario/modificar/${user._id}`}
                       className="btn btn-dark text-white me-2"
                     >
-                      <i class="fas fa-edit"></i>
+                      <i className="fas fa-edit"></i>
                     </Link>
 
                     <button
@@ -82,7 +82,7 @@ function ReadUser() {
                       }}
                       className="btn btn-danger text-white"
                     >
-                      <i class="fas fa-trash"></i>
+                      <i className="fas fa-trash"></i>
                     </button>
                   </th>
                 </tr>
