@@ -19,12 +19,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <PublicRoute
-            restricted={true}
-            component={Admin}
-            path="/admin"
-            exact
-          />
+          <PublicRoute restricted={true} component={Admin} path="/" exact />
           <PrivateRoute component={Home} path="/dashboard" />
           <PrivateRoute component={Create} path="/producto/crear" />
           <PrivateRoute
