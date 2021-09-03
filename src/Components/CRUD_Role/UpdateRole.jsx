@@ -25,7 +25,7 @@ function UpdateRole() {
     ev.preventDefault();
     const response = await axios({
       method: "PATCH",
-      url: "process.env.REACT_APP_API_URL + "/role/" + params.id,
+      url: process.env.REACT_APP_API_URL + "/role/" + params.id,
       data: { name },
     });
     history.push("/role");
